@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Scraper
+class TestScraper::Scraper 
   attr_accessor :article_arr
 
   def self.scrape_tech_crunch

@@ -1,4 +1,4 @@
-class Article
+class TestScraper::Article
 
 
 
