@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class TestScraper::Scraper
   attr_accessor :article_arr
 
@@ -6,10 +9,11 @@ class TestScraper::Scraper
     document = open(url)
     content = document.read
     parsed_content = Nokogiri::HTML(content)
+    @article_arr = [] 
 
-    parsed_content.css("h2.post-block__title").css("a").each.with_index(1) do |a, i|
-      title = a.children.text.strip
-      url = a.attribute("href").value
+    parsed_content.css("h2.post-block__title").css("a").each do |element|
+      title = element.children.text.strip
+      url = element.attribute("href").value
     end
   end
 
