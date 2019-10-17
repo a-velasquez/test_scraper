@@ -1,0 +1,5 @@
+class TestScraper::CLI
+
+
+
+end
