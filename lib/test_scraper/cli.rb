@@ -4,6 +4,7 @@ class TestScraper::CLI
 
   def call
     greeting
+    recent_articles
   end
 
   def greeting
@@ -19,13 +20,10 @@ class TestScraper::CLI
 
   def recent_articles
     puts "Here's a list of the most recent articles:"
-    articles = TestScraper.scrape_tech_crunch
-    articles.each.with_index(1) do |value, index|
-      puts "#{index} - #{value.title}"
-      puts "#{value.url}"
-    end
+    # articles = TestScraper.scrape_tech_crunch
+    # articles.each.with_index(1) do |value, index|
+    puts "Article Title"
+    puts "Article URL"
   end
-
-
 
 end
