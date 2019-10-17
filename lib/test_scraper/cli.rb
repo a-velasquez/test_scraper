@@ -1,8 +1,12 @@
-class TestScraper::CLI
+require "colorize"
+class CLI
 
   def call
     greeting
-    list_articles 
+  end
+
+  def greeting
+    puts "Loading ...".green.bold
   end
 
 

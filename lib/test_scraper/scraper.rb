@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class TestScraper::Scraper
+class Scraper
   attr_accessor :article_arr
 
   def self.scrape_tech_crunch
@@ -9,7 +9,7 @@ class TestScraper::Scraper
     document = open(url)
     content = document.read
     parsed_content = Nokogiri::HTML(content)
-    @article_arr = [] 
+    @article_arr = []
 
     parsed_content.css("h2.post-block__title").css("a").each do |element|
       title = element.children.text.strip

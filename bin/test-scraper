@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/tech_sites'
+require './lib/test_scraper'
 
-TechSites::CLI.new.call
+CLI.new.call
