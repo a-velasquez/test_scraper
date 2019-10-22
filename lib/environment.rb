@@ -2,10 +2,10 @@ require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
-require_relative "test_scraper/cli"
-require_relative "test_scraper/article"
-require_relative "test_scraper/scraper"
-require_relative "test_scraper/version"
+require_relative "test_scraper/cli.rb"
+require_relative "test_scraper/article.rb"
+require_relative "test_scraper/scraper.rb"
+require_relative "test_scraper/version.rb"
 
 module TestScraper
   class Error < StandardError; end

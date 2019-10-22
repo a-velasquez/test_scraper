@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require "./lib/environment.rb"
+require './lib/environment'
 
 
-TestScraper::CLI.new.call
+#TestScraper::CLI.new.call
+TestScraper::Scraper.new("https://techcrunch.com").scrape_tech_crunch
