@@ -8,20 +8,19 @@ class TestScraper::Scraper
   def initialize(url)
     #url = "https://techcrunch.com"
     @doc = Nokogiri::HTML(open(url))
-    binding.pry
+    #binding.pry
   end
 
   def scrape_tech_crunch
-    articles = @doc.css("h2.post-block__title").css("a")
-    top_stories = articles.map do |story|
-      stories = {
-        :title => story.children.text.strip,
-        :url => story.attribute("href").value.text
-      }
-        # TestScraper::Article.new(stories)
-    
-    end
-  end
+    @articles = []
 
+    doc.css("h2.post-block__title").css("a").each do |a|
+      title = a.children.text.strip
+      url = a.attribute("href").value
+      @articles << {title: title, url: url}
+    end
+    @articles
+    binding.pry
+  end
 
 end
