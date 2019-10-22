@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class TestScraper::Scraper
-  attr_accessor :doc
+  attr_accessor :doc, :articles, :title, :url
 
   def initialize(url)
     #url = "https://techcrunch.com"
@@ -12,14 +12,14 @@ class TestScraper::Scraper
   end
 
   def scrape_tech_crunch
-    @articles = []
-
-    doc.css("h2.post-block__title").css("a").each do |a|
-      title = a.children.text.strip
-      url = a.attribute("href").value
-      @articles << {title: title, url: url}
+    articles = @doc.css("h2.post-block__title").css("a")
+    top_stories = articles.each do |story|
+      stories = {
+        :title => story.children.text.stripq,
+        :url => story.attribute("href").value
+      }
+      TestScraper::Article.new(stories)
     end
-    @articles
     binding.pry
   end
 
