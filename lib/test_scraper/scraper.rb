@@ -11,6 +11,8 @@ class TestScraper::Scraper
     #binding.pry
   end
 
+#working - now just have to find a  way to call the information to CLI
+
   def scrape_tech_crunch
     articles = @doc.css("h2.post-block__title").css("a")
     top_stories = articles.each do |story|

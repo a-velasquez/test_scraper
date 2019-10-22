@@ -7,9 +7,11 @@ class TestScraper::Article
     hash.each do |k, v|
       self.send "#{k}=", v
     end
-    @@all << self 
+    @@all << self
   end
 
+
+# TestScraper::Article.all returns @title and @url for each object.
   def self.all
     @@all
   end
