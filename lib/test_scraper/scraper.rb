@@ -19,7 +19,7 @@ class TestScraper::Scraper
       stories = {
         :title => story.children.text.strip,
         :url => story.attribute("href").value,
-        :preview => @doc.css("div.post-block__content")[0].text.strip
+        :preview => story.css("div.post-block__content").text.strip #only brings up the first article's preview
       }
       TestScraper::Article.new(stories)
     end
@@ -28,7 +28,7 @@ class TestScraper::Scraper
 
 end
 
-# :preview css selector for iterator => a = doc.css("div.post-block__content").children.text 
+# :preview css selector for iterator => a = doc.css("div.post-block__content").children.text
 
 # def list_articles
 #   TestScraper::Article.all.each.with_index(1) do |story, index|
