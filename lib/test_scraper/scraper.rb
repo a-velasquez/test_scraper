@@ -19,7 +19,7 @@ class TestScraper::Scraper
       stories = {
         :title => story.children.text.strip,
         :url => story.attribute("href").value,
-        :preview => story.css("div.post-block__content").children.text
+        :preview => @doc.css("div.post-block__content")[0].text.strip
       }
       TestScraper::Article.new(stories)
     end
