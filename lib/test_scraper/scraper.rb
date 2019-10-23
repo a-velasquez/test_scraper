@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class TestScraper::Scraper
-  attr_accessor :doc, :articles, :title, :url
+  attr_accessor :doc, :articles, :title, :url, :preview
 
   def initialize(url)
     url = "https://techcrunch.com"
@@ -18,10 +18,12 @@ class TestScraper::Scraper
     top_stories = articles.each do |story|
       stories = {
         :title => story.children.text.strip,
-        :url => story.attribute("href").value
+        :url => story.attribute("href").value,
+        :preview => story.css("div.post-block__content").children.text
       }
       TestScraper::Article.new(stories)
     end
+    # binding.pry
   end
 
 end

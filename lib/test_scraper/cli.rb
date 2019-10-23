@@ -25,7 +25,6 @@ class TestScraper::CLI
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".blue.bold
     TestScraper::Article.all.each.with_index(1) do |story, index|
       puts "#{index}. #{story.title}".blue.bold
-      puts "#{story.url}".blue.bold
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     end
   end
@@ -40,7 +39,7 @@ class TestScraper::CLI
         posting = TestScraper::Article.all[input.to_i-1]
         puts "Here ya go!".blue.bold
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".blue.bold
-        puts "#{posting.title}"
+        puts "#{posting.preview}"
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".blue.bold
         puts "the full article can be found at: #{posting.url}"
       elsif input == "recent"

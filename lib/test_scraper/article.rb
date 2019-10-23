@@ -1,5 +1,5 @@
 class TestScraper::Article
-  attr_accessor :title, :url
+  attr_accessor :title, :url, :preview 
 
   @@all = []
 
