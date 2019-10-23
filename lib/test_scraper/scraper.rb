@@ -28,7 +28,8 @@ class TestScraper::Scraper
 end
 
 def list_articles
-  TestScraper::Article.all.each do |story|
-    puts "#{story.title}"
+  TestScraper::Article.all.each.with_index(1) do |story, index|
+    puts "#{index}. #{story.title}"
+    puts "#{story.url}"
   end
 end
