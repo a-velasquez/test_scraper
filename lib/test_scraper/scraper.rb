@@ -8,7 +8,7 @@ class TestScraper::Scraper
   def initialize(url)
     url = "https://techcrunch.com"
     @doc = Nokogiri::HTML(open(url))
-    #binding.pry
+    binding.pry
   end
 
 #working - now just have to find a  way to call the information to CLI
@@ -27,6 +27,8 @@ class TestScraper::Scraper
   end
 
 end
+
+# :preview css selector for iterator => a = doc.css("div.post-block__content").children.text 
 
 # def list_articles
 #   TestScraper::Article.all.each.with_index(1) do |story, index|
