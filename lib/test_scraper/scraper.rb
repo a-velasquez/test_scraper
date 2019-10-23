@@ -28,7 +28,7 @@ class TestScraper::Scraper
 end
 
 def list_articles
-  TestScraper::Article.each do |story|
+  TestScraper::Article.all.each do |story|
     puts "#{story.title}"
   end
 end
