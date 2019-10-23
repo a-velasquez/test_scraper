@@ -17,7 +17,7 @@ class TestScraper::Scraper
     articles = @doc.css("h2.post-block__title").css("a")
     top_stories = articles.each do |story|
       stories = {
-        :title => story.children.text.stripq,
+        :title => story.children.text.strip,
         :url => story.attribute("href").value
       }
       TestScraper::Article.new(stories)
@@ -25,4 +25,10 @@ class TestScraper::Scraper
     binding.pry
   end
 
+end
+
+def list_articles
+  TestScraper::Article.each do |story|
+    puts "#{story.title}"
+  end
 end
