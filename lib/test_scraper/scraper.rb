@@ -6,7 +6,7 @@ class TestScraper::Scraper
   attr_accessor :doc, :articles, :title, :url
 
   def initialize(url)
-    #url = "https://techcrunch.com"
+    url = "https://techcrunch.com"
     @doc = Nokogiri::HTML(open(url))
     #binding.pry
   end
@@ -22,14 +22,13 @@ class TestScraper::Scraper
       }
       TestScraper::Article.new(stories)
     end
-    binding.pry
   end
 
 end
 
-def list_articles
-  TestScraper::Article.all.each.with_index(1) do |story, index|
-    puts "#{index}. #{story.title}"
-    puts "#{story.url}"
-  end
-end
+# def list_articles
+#   TestScraper::Article.all.each.with_index(1) do |story, index|
+#     puts "#{index}. #{story.title}"
+#     puts "#{story.url}"
+#   end
+# end

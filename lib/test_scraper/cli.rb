@@ -4,6 +4,7 @@ class TestScraper::CLI
 
   def call
     greeting
+    TestScraper::Scraper.new("https://techcrunch.com").scrape_tech_crunch
     recent_articles
   end
 
@@ -20,10 +21,10 @@ class TestScraper::CLI
 
   def recent_articles
     puts "Here's a list of the most recent articles:".white.bold
-    # articles = TestScraper.scrape_tech_crunch
-    # articles.each.with_index(1) do |value, index|
-    puts "Article Title".white.bold
-    puts "Article URL".white.bold
+    TestScraper::Article.all.each.with_index(1) do |story, index|
+      puts "#{index}. #{story.title}"
+      puts "#{story.url}"
+    end
   end
 
 end
