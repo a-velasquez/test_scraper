@@ -8,7 +8,6 @@ class TestScraper::Scraper
   def initialize(url)
     url = "https://techcrunch.com"
     @doc = Nokogiri::HTML(open(url))
-    binding.pry
   end
 
 #working - now just have to find a  way to call the information to CLI
@@ -19,11 +18,10 @@ class TestScraper::Scraper
       stories = {
         :title => story.children.text.strip,
         :url => story.attribute("href").value,
-        :preview => story.css("div.post-block__content").text.strip #only brings up the first article's preview
+        :preview => @doc.css("div.post-block__content").children.first.text #only brings up the first article's preview
       }
       TestScraper::Article.new(stories)
     end
-    # binding.pry
   end
 
 end
