@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class TestScraper::Scraper
-  attr_accessor :doc, :articles, :title, :url, :preview
+  attr_accessor :doc, :articles, :title, :href, :preview
 
   def initialize(url)
     url = "https://techcrunch.com"
@@ -13,18 +13,34 @@ class TestScraper::Scraper
 #working - now just have to find a  way to call the information to CLI
 
   def scrape_tech_crunch
-    articles = @doc.css("h2.post-block__title").css("a")
-    top_stories = articles.each do |story|
-      stories = {
-        :title => story.children.text.strip,
-        :url => story.attribute("href").value,
-        :preview => @doc.css("div.post-block__content").children.first.text #only brings up the first article's preview
-      }
-      TestScraper::Article.new(stories)
+    @doc.css('.post-block').map do |story| # navigate down from the selected node
+
+    title   = story.at_css('h2.post-block__title a')
+    preview = story.at_css('div.post-block__content')
+
+    TestScraper::Article.new(
+      title:   title.content.strip,
+      href:    title['href'],
+      preview: preview.content.strip
+      )
     end
+    binding.pry
   end
 
+
 end
+
+# def scrape_tech_crunch
+#   articles = @doc.css("h2.post-block__title").css("a")
+#   top_stories = articles.each do |story|
+#     stories = {
+#       :title => story.children.text.strip,
+#       :url => story.attribute("href").value,
+#       :preview => @doc.css("div.post-block__content").children.first.text #only brings up the first article's preview
+#     }
+#     TestScraper::Article.new(stories)
+#   end
+# end
 
 # :preview css selector for iterator => a = doc.css("div.post-block__content").children.text
 
