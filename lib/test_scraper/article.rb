@@ -1,5 +1,5 @@
 class TestScraper::Article
-  attr_accessor :title, :href, :preview 
+  attr_accessor :title, :href, :preview
 
   @@all = []
 
@@ -10,12 +10,7 @@ class TestScraper::Article
     @@all << self
   end
 
-
-# TestScraper::Article.all returns @title and @url for each object.
   def self.all
     @@all
   end
-
-
-
 end

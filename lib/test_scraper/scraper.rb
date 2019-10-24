@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
 class TestScraper::Scraper
   attr_accessor :doc
 

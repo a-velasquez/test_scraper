@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'byebug'
+require 'colorize'
 
 require_relative "test_scraper/cli.rb"
 require_relative "test_scraper/article.rb"
