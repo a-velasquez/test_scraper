@@ -41,7 +41,7 @@ class TestScraper::CLI
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".blue.bold
         puts "#{posting.preview}"
         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".blue.bold
-        puts "the full article can be found at: #{posting.url}"
+        puts "the full article can be found at: #{posting.href}"
       elsif input == "recent"
         recent_articles
       else
