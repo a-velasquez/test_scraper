@@ -8,50 +8,54 @@ class TestScraper::CLI
   end
 
   def greeting
-    puts "Loading ...............".colorize(:light_blue)
-    puts "".colorize(:light_blue)
-    puts "Welcome to:".colorize(:light_blue)
-    puts "--.--          |    ,---.                    |    ".colorize(:light_blue)
-    puts "  |  ,---.,---.|---.|    ,---..   .,---.,---.|---.".colorize(:light_blue)
-    puts "  |  |---'|    |   ||    |    |   ||   ||    |   |".colorize(:light_blue)
-    puts "  `  `---'`---'`   '`---'`    `---'`   '`---'`   '".colorize(:light_blue)
-    puts "".colorize(:light_blue)
+    puts "Loading ...............".white
+    puts ""
+    puts "Welcome to"
+    puts "--.--          |    ,---.                    |    ".white
+    puts "  |  ,---.,---.|---.|    ,---..   .,---.,---.|---.".white
+    puts "  |  |---'|    |   ||    |    |   ||   ||    |   |".white
+    puts "  `  `---'`---'`   '`---'`    `---'`   '`---'`   '".white
+    puts ""
   end
 
   def recent_articles
-    puts "Here's a list of the most recent articles from Tech Crunch:".colorize(:light_blue)
-    puts "=".colorize(:light_blue) * 100
+    puts "Here's a list of the most recent articles from Tech Crunch:".white
+    puts "=".white * 130
     TestScraper::Article.all.each.with_index(1) do |article, index|
-      puts " ▶️ #{index}. #{article.title}".colorize(:light_blue)
-      puts "=".colorize(:light_blue) * 100
+      puts " ⚪️ #{index}. #{article.title}".white
+      puts "=".white * 130
     end
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the article you'd like to preview, or type 'recent' to see the list again".colorize(:light_blue)
+      puts "Enter the number of the article you'd like to preview".colorize(:white)
       input = gets.strip
 
       if input.to_i > 0
         posting = TestScraper::Article.all[input.to_i-1]
-        puts "Here ya go!".colorize(:light_blue)
-        puts "=".colorize(:light_blue) * 100
-        puts ">> #{posting.preview}".colorize(:light_blue)
-        puts "=".colorize(:light_blue) * 100
-        puts "the full article can be found at: #{posting.href}".colorize(:light_blue)
+        puts ""
+        puts "Here ya go!".colorize(:white)
+        puts ""
+        puts "=".colorize(:white) * 130
+        puts "⚪️ #{posting.preview}".colorize(:white)
+        puts "=".colorize(:white) * 130
+        puts ""
+        puts "the full article can be found at: #{posting.href}".colorize(:white)
+        puts ""
       elsif input == "recent"
         recent_articles
       elsif input == "exit"
         goodbye
       else
-        puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".blue
+        puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".white
       end
     end
   end
 
   def goodbye
-    puts "Thanks For Stopping By!".blue.bold
+    puts "👋🏼 Thanks For Stopping By!".white
   end
 
 end
