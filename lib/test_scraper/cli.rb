@@ -8,7 +8,7 @@ class TestScraper::CLI
   end
 
   def greeting
-    puts "Loading ...............".white
+    puts "Loading ...............".green
     puts ""
     puts "Welcome to"
     puts "--.--          |    ,---.                    |    ".white
@@ -30,19 +30,19 @@ class TestScraper::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the article you'd like to preview".colorize(:white)
+      puts "Enter the number of the article you'd like to preview".white
       input = gets.strip
 
       if input.to_i > 0
-        posting = TestScraper::Article.all[input.to_i-1]
+        selected_article = TestScraper::Article.all[input.to_i-1]
         puts ""
-        puts "Here ya go!".colorize(:white)
+        puts "Here ya go!".white
         puts ""
-        puts "=".colorize(:white) * 130
-        puts "⚪️ #{posting.preview}".colorize(:white)
-        puts "=".colorize(:white) * 130
+        puts "=".white * 130
+        puts "⚪️ #{selected_article.preview}".white
+        puts "=".white * 130
         puts ""
-        puts "the full article can be found at: #{posting.href}".colorize(:white)
+        puts "the full article can be found at: #{posting.href}".white
         puts ""
       elsif input == "recent"
         recent_articles

@@ -2,7 +2,6 @@ class TestScraper::Scraper
   attr_accessor :doc
 
   def initialize(url)
-    url = "https://techcrunch.com"
     @doc = Nokogiri::HTML(open(url))
   end
 
