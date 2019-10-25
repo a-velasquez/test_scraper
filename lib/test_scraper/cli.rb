@@ -8,7 +8,7 @@ class TestScraper::CLI
   end
 
   def greeting
-    puts "Loading ...............".green
+    puts "Loading ...............".blink.green
     puts ""
     puts "Welcome to"
     puts "--.--          |    ,---.                    |    ".white
@@ -33,7 +33,7 @@ class TestScraper::CLI
       puts "Enter the number of the article you'd like to preview".white
       input = gets.strip
 
-      if input.to_i > 0
+      if input.to_i > 0 
         selected_article = TestScraper::Article.all[input.to_i-1]
         puts ""
         puts "Here ya go!".white
@@ -42,7 +42,7 @@ class TestScraper::CLI
         puts "⚪️ #{selected_article.preview}".white
         puts "=".white * 130
         puts ""
-        puts "the full article can be found at: #{posting.href}".white
+        puts "the full article can be found at: #{selected_article.href}".white
         puts ""
       elsif input == "recent"
         recent_articles
