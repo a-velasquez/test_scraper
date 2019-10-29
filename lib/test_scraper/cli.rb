@@ -2,7 +2,7 @@ class TestScraper::CLI
 
   def call
     greeting
-    TestScraper::Scraper.new("https://techcrunch.com").scrape_tech_crunch
+    TestScraper::Scraper.scrape_tech_crunch("https://techcrunch.com")
     recent_articles
     menu
   end

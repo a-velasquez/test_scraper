@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     test_scraper (0.1.0)
-      pry
 
 GEM
   remote: https://rubygems.org/
@@ -27,6 +26,7 @@ DEPENDENCIES
   byebug
   colorize
   nokogiri
+  pry
   rake (~> 10.0)
   test_scraper!
 
