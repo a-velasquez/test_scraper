@@ -4,6 +4,7 @@ class TestScraper::CLI
     greeting
     TestScraper::Scraper.scrape_tech_crunch("https://techcrunch.com")
     recent_articles
+    binding.pry 
     menu
   end
 

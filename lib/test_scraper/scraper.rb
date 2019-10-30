@@ -17,5 +17,12 @@ class TestScraper::Scraper
     end
   end
 
+  def self.scrape_full_text(article_url)
+    doc = Nokogiri::HTML(open(article_url))
+    full_articles = {}
+    full_text = doc.css('div.article-content')
+
+  end
+
 
 end
