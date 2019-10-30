@@ -1,7 +1,6 @@
 require "pry"
 
 class TestScraper::Scraper
-  attr_accessor :doc
 
   def self.scrape_tech_crunch(homepage)
     doc = Nokogiri::HTML(open(homepage))
