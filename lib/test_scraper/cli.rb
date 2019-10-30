@@ -1,10 +1,11 @@
+require 'pry'
 class TestScraper::CLI
 
   def call
     greeting
     get_articles
-    recent_articles
     binding.pry
+    recent_articles
     menu
   end
 
@@ -21,7 +22,6 @@ class TestScraper::CLI
 
   def get_articles
     article_array = TestScraper::Scraper.scrape_tech_crunch("https://techcrunch.com")
-    Article.create_from_array(article_array)
   end
 
   def recent_articles

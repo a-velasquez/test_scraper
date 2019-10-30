@@ -3,18 +3,20 @@ class TestScraper::Article
 
   @@all = []
 
-  def initialize(hash)
-    hash.each do |k, v|
-      self.send "#{k}=", v
-      @@all << self
+  def initialize(article_hash)
+    article_hash.each do |k, v|
+      self.send "#{k}=", v  
+    end
+    @@all << self
+  end
+
+  def self.create_from_array(array)
+    array.each do |hash|
+      TestScraper::Article.new(hash)
     end
   end
 
-  def self.create_from_array(article_array)
-    article_array.each do |hash|
-      Article.new(hash)
-
-  def add_full_text(full_text_hash) #use to add full text to hash of article objects
+  def self.add_full_text(full_text_hash) #use to add full text to hash of article objects
   full_text_hash.each do |k, v|
     self.send "#{k}=", v
     end
