@@ -6,9 +6,13 @@ class TestScraper::Article
   def initialize(hash)
     hash.each do |k, v|
       self.send "#{k}=", v
+      @@all << self
     end
-    @@all << self
   end
+
+  def self.create_from_array(article_array)
+    article_array.each do |hash|
+      Article.new(hash)
 
   def add_full_text(full_text_hash) #use to add full text to hash of article objects
   full_text_hash.each do |k, v|

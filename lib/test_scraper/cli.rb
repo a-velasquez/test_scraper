@@ -2,9 +2,9 @@ class TestScraper::CLI
 
   def call
     greeting
-    TestScraper::Scraper.scrape_tech_crunch("https://techcrunch.com")
+    get_articles
     recent_articles
-    binding.pry 
+    binding.pry
     menu
   end
 
@@ -17,6 +17,11 @@ class TestScraper::CLI
     puts "   |  |---'|    |   ||    |    |   ||   ||    |   |".white.bold
     puts "   `  `---'`---'`   '`---'`    `---'`   '`---'`   '".white.bold
     puts ""
+  end
+
+  def get_articles
+    article_array = TestScraper::Scraper.scrape_tech_crunch("https://techcrunch.com")
+    Article.create_from_array(article_array)
   end
 
   def recent_articles
