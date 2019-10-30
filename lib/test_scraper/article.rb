@@ -1,5 +1,5 @@
 class TestScraper::Article
-  attr_accessor :title, :href, :preview, :full_text
+  attr_accessor :title, :href, :preview, :text
 
   @@all = []
 
@@ -10,13 +10,14 @@ class TestScraper::Article
     @@all << self
   end
 
-  def self.add_full_text(full_text_hash) #use to add full text to hash of article objects
-    full_text_hash.each do |k, v|
-      self.send "#{k}=", v
+  def self.add_student_attributes(attributes_hash) #use to add full text to hash of article objects
+    attributes_hash.each do |key, value|
+      self.send("#{key}=", value)
     end
   end
 
   def self.all
     @@all
   end
+
 end
