@@ -6,9 +6,9 @@ class CLI
 
   def run
     make_articles
-    binding.pry
-    add_full_article_to_headline
     display_students
+    binding.pry
+    add_full_article_to_headlinee
   end
 
   def make_articles
@@ -24,15 +24,9 @@ class CLI
   end
 
   def display_students
-    Article.all.each do |student|
-      puts "#{student.name.upcase}".colorize(:blue)
-      puts "  location:".colorize(:light_blue) + " #{student.location}"
-      puts "  profile quote:".colorize(:light_blue) + " #{student.profile_quote}"
-      puts "  bio:".colorize(:light_blue) + " #{student.bio}"
-      puts "  twitter:".colorize(:light_blue) + " #{student.twitter}"
-      puts "  linkedin:".colorize(:light_blue) + " #{student.linkedin}"
-      puts "  github:".colorize(:light_blue) + " #{student.github}"
-      puts "  blog:".colorize(:light_blue) + " #{student.blog}"
+    Article.all.each do |article|
+      puts "  #{article.title}\n".colorize(:blue)
+      puts "  #{article.preview}\\n".colorize(:blue)
       puts "----------------------".colorize(:green)
     end
   end
