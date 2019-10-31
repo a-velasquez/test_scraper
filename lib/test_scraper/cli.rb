@@ -7,8 +7,7 @@ class CLI
   def run
     make_articles
     add_full_article_to_headline
-    binding.pry
-    display_students
+    display_articles
   end
 
   def make_articles
@@ -23,14 +22,40 @@ class CLI
     end
   end
 
-  def display_students
+  def display_articles
     Article.all.each do |article|
       puts ""
-      puts " " + "#{article.title}".colorize(:blue).bold.underline
-      puts "   By #{article.author}".colorize(:blue)
+      puts " " + "#{article.title}".colorize(:white).bold.underline
+      puts "   By #{article.author}".colorize(:white)
       puts ""
-      puts "\n#{article.preview}\n".colorize(:blue)
-      puts "~".colorize(:green) * 135
+      puts "\n#{article.preview}\n".colorize(:white)
+      puts "~".colorize(:yellow) * 135
+    end
+  end
+
+  def menu
+    input = nil
+    while input != "exit"
+      puts " Enter the number of the article you'd like to preview".white
+      input = gets.strip
+
+      if input.to_i > 0
+        selected_article = TestScraper::Article.all[input.to_i-1]
+        puts ""
+        puts "Here ya go!".white
+        puts "=".white * 115
+        puts " ⚪️ #{selected_article.preview}".white
+        puts "=".white * 115
+        puts ""
+        puts "the full article can be found at:".white + " #{selected_article.href}".green.bold.underline
+        puts ""
+      elsif input == "recent"
+        recent_articles
+      elsif input == "exit"
+        goodbye
+      else
+        puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".white
+      end
     end
   end
 
