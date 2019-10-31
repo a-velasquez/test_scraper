@@ -8,7 +8,7 @@ class CLI
     make_articles
     display_students
     binding.pry
-    add_full_article_to_headlinee
+    add_full_article_to_headline
   end
 
   def make_articles
@@ -25,9 +25,9 @@ class CLI
 
   def display_students
     Article.all.each do |article|
-      puts "  #{article.title}\n".colorize(:blue)
-      puts "  #{article.preview}\\n".colorize(:blue)
-      puts "----------------------".colorize(:green)
+      puts "    #{article.title}\n".colorize(:blue)
+      puts "    #{article.preview}\n".colorize(:blue)
+      puts "-".colorize(:green) * 135
     end
   end
 
