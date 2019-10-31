@@ -19,33 +19,16 @@ class Scraper
     articles
   end
 
-# doc.at_css('div.river-byline')
-
-
  def self.scrape_profile_page(profile_url)
-    student_profile = {}
+    full_articles = {}
     html = open(profile_url)
-    profile = Nokogiri::HTML(html)
-
-    # Social Links
-
-    profile.css("div.main-wrapper.profile .social-icon-container a").each do |social|
-      if social.attribute("href").value.include?("twitter")
-        student_profile[:twitter] = social.attribute("href").value
-      elsif social.attribute("href").value.include?("linkedin")
-        student_profile[:linkedin] = social.attribute("href").value
-      elsif social.attribute("href").value.include?("github")
-        student_profile[:github] = social.attribute("href").value
-      else
-        student_profile[:blog] = social.attribute("href").value
-      end
+    full_text = Nokogiri::HTML(html)
+    full_text.css('div.article-content').each do |article|
+      full_articles[:text] = full_text.css('p').text
     end
-
-    student_profile[:profile_quote] = profile.css("div.main-wrapper.profile .vitals-text-container .profile-quote").text
-    student_profile[:bio] = profile.css("div.main-wrapper.profile .description-holder p").text
-
-    student_profile
+    full_articles
   end
+
 end
 
 

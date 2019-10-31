@@ -6,9 +6,9 @@ class CLI
 
   def run
     make_articles
-    display_students
-    binding.pry
     add_full_article_to_headline
+    binding.pry
+    display_students
   end
 
   def make_articles
