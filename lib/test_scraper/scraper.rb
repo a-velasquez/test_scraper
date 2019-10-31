@@ -9,13 +9,17 @@ class Scraper
     headlines = Nokogiri::HTML(html)
     headlines.css('.post-block').each do |headline|
       headline_details = {}
-      headline_details[:title] = headline.at_css('h2.post-block__title a').text.strip
+      headline_details[:title]   = headline.at_css('h2.post-block__title a').text.strip
       headline_details[:preview] = headline.at_css('div.post-block__content').text.strip
+      headline_details[:author]  = headline.at_css('div.river-byline').css('.river-byline__authors').text.strip
 
       articles << headline_details
     end
     articles
   end
+
+# doc.at_css('div.river-byline')
+
 
  def self.scrape_profile_page(profile_url)
     student_profile = {}
