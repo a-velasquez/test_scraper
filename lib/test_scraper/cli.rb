@@ -7,7 +7,8 @@ class CLI
   def run
     make_articles
     add_full_article_to_headline
-    display_articles
+    menu
+    goodbye
   end
 
   def make_articles
@@ -23,12 +24,12 @@ class CLI
   end
 
   def display_articles
-    Article.all.each do |article|
+    Article.all.each.with_index(1) do |article, index|
       puts ""
-      puts " " + "#{article.title}".colorize(:white).bold.underline
+      puts "#{index}." + "#{article.title}".colorize(:white).bold.underline
       puts "   By #{article.author}".colorize(:white)
       puts ""
-      puts "\n#{article.preview}\n".colorize(:white)
+      puts "   #{article.preview}\n".colorize(:white)
       puts "~".colorize(:yellow) * 135
     end
   end
@@ -36,27 +37,33 @@ class CLI
   def menu
     input = nil
     while input != "exit"
-      puts " Enter the number of the article you'd like to preview".white
+      puts " Enter the number of the article you'd like to read".white
+      puts ""
+      puts display_articles
       input = gets.strip
 
       if input.to_i > 0
-        selected_article = TestScraper::Article.all[input.to_i-1]
+        selected_article = Article.all[input.to_i-1]
         puts ""
         puts "Here ya go!".white
         puts "=".white * 115
-        puts " ⚪️ #{selected_article.preview}".white
+        puts " ⚪️ #{selected_article.text}".white
         puts "=".white * 115
         puts ""
         puts "the full article can be found at:".white + " #{selected_article.href}".green.bold.underline
         puts ""
       elsif input == "recent"
-        recent_articles
+        display_articles
       elsif input == "exit"
         goodbye
       else
         puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".white
       end
     end
+  end
+
+  def goodbye
+    puts "Thanks for stopping by!"
   end
 
 end
