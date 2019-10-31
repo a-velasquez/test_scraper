@@ -25,7 +25,8 @@ class CLI
 
   def display_students
     Article.all.each do |article|
-      puts " " + "#{article.title}".colorize(:blue).underline
+      puts ""
+      puts " " + "#{article.title}".colorize(:blue).bold.underline
       puts "   By #{article.author}".colorize(:blue)
       puts ""
       puts "\n#{article.preview}\n".colorize(:blue)
