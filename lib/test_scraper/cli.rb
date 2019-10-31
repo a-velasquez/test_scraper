@@ -7,8 +7,8 @@ class CLI
   def run
     make_articles
     add_full_article_to_headline
+    display_articles
     menu
-    goodbye
   end
 
   def make_articles
@@ -37,20 +37,17 @@ class CLI
   def menu
     input = nil
     while input != "exit"
-      puts " Enter the number of the article you'd like to read".white
+      puts " Enter the number of the article you'd like to read, or 'recent' to see the latest articles".white
       puts ""
-      puts display_articles
       input = gets.strip
 
       if input.to_i > 0
         selected_article = Article.all[input.to_i-1]
         puts ""
-        puts "Here ya go!".white
-        puts "=".white * 115
-        puts " ⚪️ #{selected_article.text}".white
-        puts "=".white * 115
-        puts ""
-        puts "the full article can be found at:".white + " #{selected_article.href}".green.bold.underline
+        puts "Here ya go!".blue.bold
+        puts "=".white.bold * 115
+        puts " #{selected_article.text}".blue.bold
+        puts "=".white.bold * 115
         puts ""
       elsif input == "recent"
         display_articles
