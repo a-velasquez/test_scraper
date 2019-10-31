@@ -3,23 +3,22 @@ require 'nokogiri'
 require 'colorize'
 
 class CLI
-  BASE_PATH = "https://learn-co-curriculum.github.io/student-scraper-test-page/"
 
   def run
-    make_students
+    make_articles
     add_attributes_to_students
     display_students
   end
 
-  def make_students
-    students_array = Scraper.scrape_index_page(BASE_PATH + 'index.html')
-    Article.create_from_collection(students_array)
+  def make_articles
+    article_array = Scraper.scrape_index_page("https://techcrunch.com")
+    Article.create_from_collection(article_array)
   end
 
-  def add_attributes_to_students
-    Article.all.each do |student|
-      attributes = Scraper.scrape_profile_page(BASE_PATH + student.profile_url)
-      student.add_student_attributes(attributes)
+  def add_full_article_to_headline
+    Article.all.each do |article|
+      attributes = Scraper.scrape_profile_page(article.href)
+      article.add_student_attributes(attributes)
     end
   end
 
