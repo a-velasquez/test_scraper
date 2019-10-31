@@ -12,7 +12,7 @@ class CLI
   end
 
   def make_articles
-    article_array = Scraper.scrape_index_page("https://techcrunch.com")
+    article_array = Scraper.scrape_headlines("https://techcrunch.com")
     Article.create_from_collection(article_array)
   end
 
