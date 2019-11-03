@@ -37,9 +37,9 @@ class CLI
     Article.all.each.with_index(1) do |article, index|
       puts ""
       puts " #{index}. #{article.title}".blue.bold
-      puts "   By #{article.author}".blue.bold
+      puts "     By #{article.author}".blue.bold
       puts ""
-      puts " ▶️ #{article.preview}\n".blue.bold
+      puts " ▶️ #{article.preview}".blue.bold
       puts "~".yellow.bold * 135
     end
   end
