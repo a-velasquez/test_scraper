@@ -13,12 +13,16 @@ class CLI
   end
 
   def greeting
-    puts " Welcome to".white.bold
-    puts " --.--          |    ,---.                    |    ".white.bold
-    puts "   |  ,---.,---.|---.|    ,---..   .,---.,---.|---.".white.bold
-    puts "   |  |---'|    |   ||    |    |   ||   ||    |   |".white.bold
-    puts "   `  `---'`---'`   '`---'`    `---'`   '`---'`   '".white.bold
+    puts " Welcome to".green.bold
+    puts " --.--          |    ,---.                    |    ".green.bold
+    puts "   |  ,---.,---.|---.|    ,---..   .,---.,---.|---.".green.bold
+    puts "   |  |---'|    |   ||    |    |   ||   ||    |   |".green.bold
+    puts "   `  `---'`---'`   '`---'`    `---'`   '`---'`   '".green.bold
     puts ""
+    puts " Below is a list of the most recent articles from TechCrunch.com".green.bold
+    puts ""
+    puts " Enter the number of the article you'd like to read:".green.bold
+    puts "~".yellow.bold * 120
   end
 
   def make_articles
@@ -36,32 +40,32 @@ class CLI
   def display_articles
     Article.all.each.with_index(1) do |article, index|
       puts ""
-      puts " #{index}. #{article.title}".blue.bold
-      puts "     By #{article.author}".blue.bold
+      puts " #{index}. #{article.title}".green.bold
+      puts "     By #{article.author}".green.bold
       puts ""
-      puts " ▶️ #{article.preview}".blue.bold
-      puts "~".yellow.bold * 135
+      puts " ▶️ #{article.preview}".green
+      puts "~".yellow.bold * 120
     end
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts " Enter the number of the article you'd like to read, or type 'recent' to see the latest articles".white.bold
       puts ""
       input = gets.strip
 
-      if input.to_i > 0
+      if input.to_i > 0 && input.to_i < 21
         selected_article = Article.all[input.to_i-1]
         puts ""
         puts "=".yellow.bold * 135
-        puts "#{selected_article.title}".blue.bold
+        puts "#{selected_article.title}".green.bold
+        puts " By #{selected_article.author}".green.bold
         puts ""
-        puts " ▶️ #{selected_article.text}".blue.bold
+        puts " ▶️ #{selected_article.text}".green
         puts ""
         puts "=".yellow.bold * 135
         puts ""
-        puts "If you'd like to open the article in your browser, click here 👉🏼 #{selected_article.href}".blue.bold
+        puts "If you'd like to open the article in your browser, click here 👉🏼".green + " #{selected_article.href}".green.bold
         puts ""
         puts "=".yellow.bold * 135
       elsif input == "recent"
@@ -69,13 +73,13 @@ class CLI
       elsif input == "exit"
         goodbye
       else
-        puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".white.bold
+        puts "Hmmm. I didn't quite get that. Type 'recent' to see the lastest articles or 'exit.' to leave the application.".green.bold
       end
     end
   end
 
   def goodbye
-    puts "  👋🏼 Thanks for stopping by!".white.bold
+    puts "  👋🏼 Thanks for stopping by!".green.bold
   end
 
 end
