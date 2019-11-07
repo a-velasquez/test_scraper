@@ -14,6 +14,7 @@ class CLI
 
   def greeting
     puts " Welcome to".green.bold
+    puts ""
     puts " #######                       #####                                     ".green.bold
     puts "    #    ######  ####  #    # #     # #####  #    # #    #  ####  #    # ".green.bold
     puts "    #    #      #    # #    # #       #    # #    # ##   # #    # #    # ".green.bold
@@ -45,7 +46,7 @@ class CLI
       puts " #{index}. #{article.title}".green.bold
       puts "     By #{article.author}".green.bold
       puts ""
-      puts " ▶️ #{article.preview}".green
+      puts " ✳️ #{article.preview}".green
       puts "~".yellow.bold * 120
     end
   end
@@ -54,6 +55,7 @@ class CLI
     input = nil
     while input != "exit"
       puts " Enter the number of the article you'd like to read:".green.bold
+      puts ""
       input = gets.strip
 
       if input.to_i > 0 && input.to_i < 21
@@ -63,7 +65,7 @@ class CLI
         puts "#{selected_article.title}".green.bold
         puts " By #{selected_article.author}".green.bold
         puts ""
-        puts " ▶️ #{selected_article.text}".green
+        puts " ✳️ #{selected_article.text}".green
         puts ""
         puts "=".yellow.bold * 135
         puts ""
