@@ -14,14 +14,16 @@ class CLI
 
   def greeting
     puts " Welcome to".green.bold
-    puts " --.--          |    ,---.                    |    ".green.bold
-    puts "   |  ,---.,---.|---.|    ,---..   .,---.,---.|---.".green.bold
-    puts "   |  |---'|    |   ||    |    |   ||   ||    |   |".green.bold
-    puts "   `  `---'`---'`   '`---'`    `---'`   '`---'`   '".green.bold
+    puts " #######                       #####                                     ".green.bold
+    puts "    #    ######  ####  #    # #     # #####  #    # #    #  ####  #    # ".green.bold
+    puts "    #    #      #    # #    # #       #    # #    # ##   # #    # #    # ".green.bold
+    puts "    #    #####  #      ###### #       #    # #    # # #  # #      ###### ".green.bold
+    puts "    #    #      #      #    # #       #####  #    # #  # # #      #    # ".green.bold
+    puts "    #    #      #    # #    # #     # #   #  #    # #   ## #    # #    # ".green.bold
+    puts "    #    ######  ####  #    #  #####  #    #  ####  #    #  ####  #    # ".green.bold
     puts ""
     puts " Below is a list of the most recent articles from TechCrunch.com".green.bold
     puts ""
-    puts " Enter the number of the article you'd like to read:".green.bold
     puts "~".yellow.bold * 120
   end
 
@@ -51,7 +53,7 @@ class CLI
   def menu
     input = nil
     while input != "exit"
-      puts ""
+      puts " Enter the number of the article you'd like to read:".green.bold
       input = gets.strip
 
       if input.to_i > 0 && input.to_i < 21
