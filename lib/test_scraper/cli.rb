@@ -7,6 +7,7 @@ class CLI
   def run
     make_articles
     add_full_article_to_headline
+    binding.pry
     greeting
     display_articles
     menu

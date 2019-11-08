@@ -1,11 +1,14 @@
 class Article
 
-  attr_accessor :title, :preview, :author, :href, :text 
+  attr_accessor :title, :preview, :author, :href, :text
 
   @@all = []
 
   def initialize(student_hash)
-    student_hash.each {|k, v| self.send(("#{k}="), v)}
+    # student_hash.each {|k, v| self.send(("#{k}="), v)}
+    student_hash.each do |k, v|
+      self.send("#{k}=", v)
+    end
     @@all << self
   end
 
@@ -17,7 +20,7 @@ class Article
 
   def add_student_attributes(attributes_hash)
     attributes_hash.each do |k, v|
-      self.send(("#{k}="), v)
+      self.send("#{k}=", v)
     end
     self
   end
