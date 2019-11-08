@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require './lib/environment.rb'
+require '../lib/environment.rb'
 
 
 CLI.new.run
