@@ -22,7 +22,7 @@ class Article
     attributes_hash.each do |k, v|
       self.send("#{k}=", v)
     end
-    self
+    # self
   end
 
   def self.all
