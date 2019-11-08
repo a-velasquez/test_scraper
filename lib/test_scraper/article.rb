@@ -5,7 +5,6 @@ class Article
   @@all = []
 
   def initialize(student_hash)
-    # student_hash.each {|k, v| self.send(("#{k}="), v)}
     student_hash.each do |k, v|
       self.send("#{k}=", v)
     end
@@ -22,7 +21,6 @@ class Article
     attributes_hash.each do |k, v|
       self.send("#{k}=", v)
     end
-    # self
   end
 
   def self.all

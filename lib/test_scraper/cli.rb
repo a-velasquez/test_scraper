@@ -1,7 +1,3 @@
-# require 'pry'
-# require 'nokogiri'
-require 'colorize'
-
 class CLI
 
   def run

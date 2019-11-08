@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'pry'
-
 class Scraper
 
   def self.scrape_headlines(index_url)
