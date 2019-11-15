@@ -31,9 +31,9 @@ class CLI
   end
 
   def add_full_article_to_headline
-    Article.all.each do |article|
-      attributes = Scraper.scrape_profile_page(article.href)
-      article.add_student_attributes(attributes)
+    Article.all.each do |headline|
+      attributes = Scraper.scrape_profile_page(headline.href)
+      headline.add_student_attributes(attributes)
     end
   end
 
